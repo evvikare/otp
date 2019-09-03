@@ -1,0 +1,30 @@
+#!/bin/bash
+#############################################################
+#
+#
+# compileall
+#
+# -----------------
+# EvVikare
+# evvikare@protonmail.com
+# CS344 -- Summer 2017
+# Program 4 Assignment
+# -----------------
+#
+# A utility for compiling all OTP programs 
+#
+#############################################################
+
+# Compile OTP key generator
+gcc -o keygen keygen.c
+
+# Compile OTP library
+gcc -c evserv.c
+
+# Compile daemon-like programs
+gcc -o otp_enc_d otp_enc_d.c evserv.o
+gcc -o otp_dec_d otp_dec_d.c evserv.o
+
+# Compile client programs
+gcc -o otp_enc otp_enc.c evserv.o
+gcc -o otp_dec otp_dec.c evserv.o
